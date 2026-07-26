@@ -8,6 +8,7 @@ import { GoogleAnalytics } from "@/components/google-analytics";
 const jetBrainsMono = JetBrains_Mono({
   variable: "--font-jbmono",
   subsets: ["latin"],
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -26,7 +27,7 @@ export default function RootLayout({
       <head>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@1.3.9/dist/web/static/pretendard.css"
+          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@1.3.9/dist/web/static/pretendard-dynamic-subset.css"
         />
       </head>
       <body className="flex min-h-full flex-col">

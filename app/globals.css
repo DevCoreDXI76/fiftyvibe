@@ -10,16 +10,19 @@
   --font-mono: var(--font-jbmono);
 }
 
-body {
-  background: var(--color-ivory);
-  color: var(--color-navy);
-  font-family: var(--font-sans);
+@layer base {
+  body {
+    background: var(--color-ivory);
+    color: var(--color-navy);
+  }
 }
 
-.brand-cursor {
-  display: inline-block;
-  color: var(--color-amber);
-  animation: brand-cursor-blink 1s step-end infinite;
+@layer components {
+  .brand-cursor {
+    display: inline-block;
+    color: var(--color-amber);
+    animation: brand-cursor-blink 1s step-end infinite;
+  }
 }
 
 @keyframes brand-cursor-blink {

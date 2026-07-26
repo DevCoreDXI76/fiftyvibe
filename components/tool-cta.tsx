@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 type ToolCTAProps = {
   title: string;
   description: string;
@@ -7,7 +9,7 @@ type ToolCTAProps = {
 
 export function ToolCTA({ title, description, href, ctaLabel }: ToolCTAProps) {
   return (
-    <a
+    <Link
       href={href}
       className="block rounded-lg border border-steel/30 bg-white p-6 transition hover:border-amber hover:shadow-md"
     >
@@ -16,6 +18,6 @@ export function ToolCTA({ title, description, href, ctaLabel }: ToolCTAProps) {
       <span className="mt-4 inline-block text-sm font-medium text-amber">
         {ctaLabel} →
       </span>
-    </a>
+    </Link>
   );
 }
