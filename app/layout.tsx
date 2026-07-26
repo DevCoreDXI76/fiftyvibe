@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { Header } from "@/components/header";
 
 const jetBrainsMono = JetBrains_Mono({
   variable: "--font-jbmono",
@@ -21,6 +22,7 @@ export default function RootLayout({
   return (
     <html lang="ko" className={`${jetBrainsMono.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col">
+        <Header />
         <main className="flex flex-1 flex-col">{children}</main>
       </body>
     </html>
