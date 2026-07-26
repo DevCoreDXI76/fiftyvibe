@@ -10,13 +10,13 @@
 - [x] 문서화: PRD/SPEC/PLAN/DECISIONS (07-26)
 
 ## 1. 개발 환경 (W1)
-- [ ] Node.js LTS 설치, `node -v` 확인
-- [ ] `npx create-next-app@latest fiftyvibe --typescript --tailwind --eslint --app --no-src-dir`
-- [ ] docs/ 폴더와 CLAUDE.md를 리포 루트에 복사
-- [ ] GitHub 리포 생성 + 첫 커밋
-- [ ] Vercel 연결 (프리뷰 배포 확인)
-- [ ] `next.config.js`에 `output: 'export'` 설정
-- [ ] vitest 설치·설정
+- [x] Node.js LTS 설치, `node -v` 확인 (v24.15.0) (07-26)
+- [x] `npx create-next-app@latest fiftyvibe --typescript --tailwind --eslint --app --no-src-dir` (07-26)
+- [x] docs/ 폴더와 CLAUDE.md를 리포 루트에 복사 (07-26, 이미 리포 루트에서 작업해 유지됨)
+- [x] 첫 커밋 (로컬 git) (07-26) + GitHub 리포 생성·연결·푸시 완료 (07-27, https://github.com/DevCoreDXI76/fiftyvibe)
+- [ ] Vercel 연결 (프리뷰 배포 확인) — 이번 세션 보류, 별도 요청 시 진행
+- [x] `next.config.ts`에 `output: 'export'` 설정 (07-26)
+- [x] vitest 설치·설정 (`npm test` → `vitest run --passWithNoTests` 정상 동작 확인) (07-26)
 
 ## 2. 공통 기반 (W1)
 - [ ] tailwind.config 디자인 토큰 등록 (SPEC §6)
