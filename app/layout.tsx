@@ -3,6 +3,7 @@ import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { GoogleAnalytics } from "@/components/google-analytics";
 
 const jetBrainsMono = JetBrains_Mono({
   variable: "--font-jbmono",
@@ -26,6 +27,7 @@ export default function RootLayout({
         <Header />
         <main className="flex flex-1 flex-col">{children}</main>
         <Footer />
+        <GoogleAnalytics />
       </body>
     </html>
   );
