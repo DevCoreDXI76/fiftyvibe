@@ -71,7 +71,9 @@ export function calculateSeveranceTax(
   const taxBase = convertedSalary - convertedSalaryDeduction;
   const convertedTax = calculateConvertedTax(taxBase);
   const severanceTax = floorWon((convertedTax / 12) * serviceYears);
-  const localIncomeTax = floorWon(severanceTax * 0.1);
+  const localIncomeTax = floorWon(
+    severanceTax * TAX_TABLES[2026].localIncomeTaxRate,
+  );
   const netAmount = severancePay - severanceTax - localIncomeTax;
 
   return {

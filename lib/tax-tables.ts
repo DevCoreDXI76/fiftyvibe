@@ -23,6 +23,7 @@ export const TAX_TABLES = {
       { upTo: 1_000_000_000, rate: 0.42, deduction: 35_940_000 },
       { upTo: null, rate: 0.45, deduction: 65_940_000 },
     ],
+    localIncomeTaxRate: 0.1,
   },
 } as const;
 
