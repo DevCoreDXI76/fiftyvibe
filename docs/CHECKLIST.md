@@ -19,11 +19,11 @@
 - [x] vitest 설치·설정 (`npm test` → `vitest run --passWithNoTests` 정상 동작 확인) (07-26)
 
 ## 2. 공통 기반 (W1)
-- [ ] tailwind.config 디자인 토큰 등록 (SPEC §6)
-- [ ] 폰트: Pretendard + JetBrains Mono
-- [ ] 레이아웃: 헤더(로고타입+커서), 푸터
-- [ ] `<Disclaimer />`, `<AdSlot />`, `<ToolCTA />`
-- [ ] GA4 스니펫 + 이벤트 유틸
+- [x] tailwind.config 디자인 토큰 등록 (SPEC §6) — Tailwind v4라 app/globals.css @theme로 구현 (07-27)
+- [x] 폰트: Pretendard + JetBrains Mono (07-27)
+- [x] 레이아웃: 헤더(로고타입+커서), 푸터 (07-27)
+- [x] `<Disclaimer />`, `<AdSlot />`, `<ToolCTA />` (07-27)
+- [x] GA4 스니펫 + 이벤트 유틸 (07-27, 측정 ID는 아직 미발급 — .env.example에 변수만 준비)
 
 ## 3. 도구 1: 퇴직소득세 계산기 (W1)
 - [ ] `lib/tax-tables.ts` (2026 세율·공제표)
