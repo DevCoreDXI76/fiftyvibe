@@ -23,6 +23,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" className={`${jetBrainsMono.variable} h-full antialiased`}>
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@1.3.9/dist/web/static/pretendard.css"
+        />
+      </head>
       <body className="flex min-h-full flex-col">
         <Header />
         <main className="flex flex-1 flex-col">{children}</main>
