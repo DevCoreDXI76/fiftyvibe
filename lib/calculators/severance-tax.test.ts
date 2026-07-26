@@ -120,4 +120,30 @@ describe("calculateSeveranceTax", () => {
       expect(result.netAmount).toBe(63_815_200);
     });
   });
+
+  describe("근속연수 직접 입력 정규화 (근속연수 1년 미만은 1년으로 처리)", () => {
+    it("근속연수 0은 1년으로 취급한다", () => {
+      const zeroYears = calculateSeveranceTax({
+        severancePay: 30_000_000,
+        serviceYears: 0,
+      });
+      const oneYear = calculateSeveranceTax({
+        severancePay: 30_000_000,
+        serviceYears: 1,
+      });
+      expect(zeroYears).toEqual(oneYear);
+    });
+
+    it("소수점 근속연수는 올림 처리한다", () => {
+      const fractional = calculateSeveranceTax({
+        severancePay: 30_000_000,
+        serviceYears: 5.5,
+      });
+      const roundedUp = calculateSeveranceTax({
+        severancePay: 30_000_000,
+        serviceYears: 6,
+      });
+      expect(fractional).toEqual(roundedUp);
+    });
+  });
 });
