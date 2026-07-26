@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
 
 const jetBrainsMono = JetBrains_Mono({
   variable: "--font-jbmono",
@@ -24,6 +25,7 @@ export default function RootLayout({
       <body className="flex min-h-full flex-col">
         <Header />
         <main className="flex flex-1 flex-col">{children}</main>
+        <Footer />
       </body>
     </html>
   );
