@@ -3,7 +3,7 @@
 import { useState, type FormEvent } from "react";
 import { calculateSeveranceTax } from "@/lib/calculators/severance-tax";
 import { calculateServiceYears } from "@/lib/calculators/service-years";
-import { formatWon, parseWonInput } from "@/lib/format-currency";
+import { formatWon } from "@/lib/format-currency";
 import { trackEvent } from "@/lib/analytics";
 import { Disclaimer } from "@/components/disclaimer";
 import { AdSlot } from "@/components/ad-slot";
@@ -113,7 +113,7 @@ export function SeveranceTaxCalculator() {
                 : ""
             }
             onChange={(event) =>
-              setSeverancePayInput(String(parseWonInput(event.target.value)))
+              setSeverancePayInput(event.target.value.replace(/[^0-9]/g, ""))
             }
             placeholder="예: 100,000,000"
             className="w-full rounded border border-steel/40 px-3 py-2"
@@ -203,6 +203,8 @@ export function SeveranceTaxCalculator() {
         </button>
       </form>
 
+      <Disclaimer />
+
       {calculation && (
         <div className="flex flex-col gap-4">
           <div>
@@ -240,7 +242,6 @@ export function SeveranceTaxCalculator() {
             )}
           </div>
 
-          <Disclaimer />
           <AdSlot variant="result" />
           <ToolCTA
             title="일시금 vs 연금 수령, 뭐가 유리할까?"
