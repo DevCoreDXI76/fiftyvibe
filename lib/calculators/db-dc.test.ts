@@ -18,7 +18,7 @@ describe("calculateDbDcCompare", () => {
       { year: 3, dbValue: 30_000_000, dcValue: 31_525_000 },
       { year: 4, dbValue: 40_000_000, dcValue: 43_101_250 },
     ]);
-    expect(result.breakEvenRate).toBeCloseTo(0, 5);
+    expect(result.breakEvenRate).toBe(0);
     expect(result.peakAnalysis).toBeUndefined();
   });
 

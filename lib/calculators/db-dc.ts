@@ -100,7 +100,9 @@ function calculateBreakEvenRate(input: DbDcInput): number {
     }
   }
 
-  return (lo + hi) / 2;
+  // 이분탐색의 잔차가 0에 매우 근접하면 정확히 0으로 반올림 (표시 시 -0.0% 방지)
+  const result = (lo + hi) / 2;
+  return Math.abs(result) < 1e-9 ? 0 : result;
 }
 
 // k년차까지 DB로 남았다가 그 시점 가치를 DC/IRP로 이전해 잔여기간 복리 성장시키고,
