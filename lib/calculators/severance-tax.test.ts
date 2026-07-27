@@ -45,7 +45,7 @@ describe("calculateSeveranceTax", () => {
       expect(result.convertedTax).toBe(5_145_000);
       expect(result.severanceTax).toBe(2_143_750);
       expect(result.localIncomeTax).toBe(214_375);
-      expect(result.netAmount).toBe(47_641_875);
+      expect(result.netAmount).toBe(47_641_880);
     });
   });
 

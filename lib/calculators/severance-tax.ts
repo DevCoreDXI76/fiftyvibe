@@ -29,6 +29,14 @@ function floorWon(value: number): number {
   return Math.floor(value + 1e-6);
 }
 
+// 홈택스의 "차감원천징수세액"은 신고대상세액을 10원 단위로 절사한 값이다
+// (2026-07-27 홈택스 실측 대조로 확인: 케이스 (b)에서 663,374원 → 663,370원).
+// severanceTax/localIncomeTax 필드 자체는 "신고대상세액"이라 그대로 두고,
+// 실수령액 계산에만 이 절사를 반영한다.
+function floorTo10Won(value: number): number {
+  return Math.floor((value + 1e-6) / 10) * 10;
+}
+
 function calculateServiceYearDeduction(serviceYears: number): number {
   const table = TAX_TABLES[2026].serviceYearDeduction;
   const bracket = table.find((b) => b.upTo === null || serviceYears <= b.upTo);
@@ -89,7 +97,8 @@ export function calculateSeveranceTax(
   const localIncomeTax = floorWon(
     severanceTax * TAX_TABLES[2026].localIncomeTaxRate,
   );
-  const netAmount = severancePay - severanceTax - localIncomeTax;
+  const netAmount =
+    severancePay - floorTo10Won(severanceTax) - floorTo10Won(localIncomeTax);
 
   return {
     serviceYearDeduction,
