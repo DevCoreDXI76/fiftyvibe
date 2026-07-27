@@ -36,6 +36,19 @@ DRY 원칙, 세금 로직 이중 관리 금지).
 3.3~5.5%, 10년 초과 수령 시 우대세율 등)는 SPEC이 "운용수익분은 별도"로 명시적으로 범위
 밖에 둔 부분이다. 개시 나이는 화면에서 "개시 OO세 → 종료 예상 OO세" 참고 표시로만 쓴다.
 
+### `lib/tax-tables.ts` 추가 (CLAUDE.md 규칙 3 — 계산 상수는 이 파일에서만 관리)
+
+1~10년차/11년차~ 감면율은 세법상 확정된 상수 스케줄이므로, 다른 세율표와 동일하게
+`TAX_TABLES`에 구간표로 추가한다(계산 파일에 매직넘버로 하드코딩하지 않음):
+
+```ts
+// lib/tax-tables.ts의 TAX_TABLES[2026] 객체에 추가
+deferredPensionTaxReduction: [
+  { upToYear: 10, rate: 0.7 },
+  { upToYear: null, rate: 0.6 },
+],
+```
+
 ### 타입/함수
 
 ```ts
@@ -73,12 +86,17 @@ export type PensionCompareResult = {
   };
 };
 
-const REDUCTION_RATE_YEAR_1_TO_10 = 0.7;
-const REDUCTION_RATE_YEAR_11_PLUS = 0.6;
-const REDUCTION_RATE_CUTOFF_YEAR = 10;
-
 function floorWon(value: number): number {
   return Math.floor(value + 1e-6);
+}
+
+function reductionRateForYear(year: number): number {
+  const table = TAX_TABLES[2026].deferredPensionTaxReduction;
+  const bracket = table.find((b) => b.upToYear === null || year <= b.upToYear);
+  if (!bracket) {
+    throw new Error(`이연퇴직소득세 감면율 구간을 찾을 수 없습니다: ${year}`);
+  }
+  return bracket.rate;
 }
 
 export function calculatePensionCompare(
@@ -98,10 +116,7 @@ export function calculatePensionCompare(
 
   const yearlyBreakdown: YearlyPensionTax[] = [];
   for (let year = 1; year <= payoutYears; year++) {
-    const reductionRate =
-      year <= REDUCTION_RATE_CUTOFF_YEAR
-        ? REDUCTION_RATE_YEAR_1_TO_10
-        : REDUCTION_RATE_YEAR_11_PLUS;
+    const reductionRate = reductionRateForYear(year);
     const severanceTax = floorWon(yearlySeveranceTaxShare * reductionRate);
     const localIncomeTax = floorWon(severanceTax * localIncomeTaxRate);
     yearlyBreakdown.push({ year, reductionRate, severanceTax, localIncomeTax });
@@ -118,7 +133,10 @@ export function calculatePensionCompare(
   const totalTax = totalSeveranceTax + totalLocalIncomeTax;
 
   const savingsAmount = lumpSum.totalTax - totalTax;
-  const savingsPercentage = (savingsAmount / lumpSum.totalTax) * 100;
+  // severanceTax가 0원인 입력(퇴직급여가 작아 과세표준이 0 이하)에서 0/0 = NaN을
+  // 방지한다.
+  const savingsPercentage =
+    lumpSum.totalTax === 0 ? 0 : (savingsAmount / lumpSum.totalTax) * 100;
 
   return {
     lumpSum,
