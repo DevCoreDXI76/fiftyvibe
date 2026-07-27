@@ -224,6 +224,10 @@ export function SeveranceTaxCalculator() {
               <span>총 세금: {formatWon(totalTax)}</span>
               <span>실효세율: {effectiveRate}%</span>
             </div>
+            <p className="mt-1 text-xs text-navy/50">
+              * 실수령액은 세금을 10원 단위로 절사해 계산합니다(홈택스 원천징수 방식). &quot;총
+              세금&quot;은 절사 전 정확한 금액이라 두 값의 차이가 최대 몇십 원 날 수 있습니다.
+            </p>
           </div>
 
           <div>

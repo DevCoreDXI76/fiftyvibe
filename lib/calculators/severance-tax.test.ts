@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { calculateSeveranceTax } from "./severance-tax";
 
 describe("calculateSeveranceTax", () => {
-  describe("SPEC 검증 케이스 (⚠️ 홈택스 미대조 — SPEC 공식 손계산값)", () => {
+  describe("근속연수 직접 입력 시나리오 (SPEC 공식 손계산값 — 10/20/5년을 가정한 계산, 실제 홈택스 대조는 아래 별도 describe 참고)", () => {
     it("(a) 퇴직급여 1억원, 근속 10년", () => {
       const result = calculateSeveranceTax({
         severancePay: 100_000_000,
@@ -46,6 +46,53 @@ describe("calculateSeveranceTax", () => {
       expect(result.severanceTax).toBe(2_143_750);
       expect(result.localIncomeTax).toBe(214_375);
       expect(result.netAmount).toBe(47_641_880);
+    });
+  });
+
+  describe("홈택스 실측 대조 케이스 (2026-07-27, 2024년 귀속 시뮬레이터로 확인)", () => {
+    it("퇴직급여 1억원, 근속 11년 (정확히 10년째 되는 날 퇴사한 경우의 실제 근속연수)", () => {
+      const result = calculateSeveranceTax({
+        severancePay: 100_000_000,
+        serviceYears: 11,
+      });
+      expect(result.serviceYearDeduction).toBe(17_500_000);
+      expect(result.convertedSalary).toBe(90_000_000);
+      expect(result.convertedSalaryDeduction).toBe(56_200_000);
+      expect(result.taxBase).toBe(33_800_000);
+      expect(result.convertedTax).toBe(3_810_000);
+      expect(result.severanceTax).toBe(3_492_500);
+      expect(result.localIncomeTax).toBe(349_250);
+      expect(result.netAmount).toBe(96_158_250);
+    });
+
+    it("퇴직급여 2억원, 근속 21년 (환산급여가 나누어떨어지지 않는 유일한 실측 케이스)", () => {
+      const result = calculateSeveranceTax({
+        severancePay: 200_000_000,
+        serviceYears: 21,
+      });
+      expect(result.serviceYearDeduction).toBe(43_000_000);
+      expect(result.convertedSalary).toBe(89_714_286);
+      expect(result.convertedSalaryDeduction).toBe(56_042_857);
+      expect(result.taxBase).toBe(33_671_429);
+      expect(result.convertedTax).toBe(3_790_714);
+      expect(result.severanceTax).toBe(6_633_749);
+      expect(result.localIncomeTax).toBe(663_374);
+      expect(result.netAmount).toBe(192_702_890);
+    });
+
+    it("퇴직급여 5,000만원, 근속 6년 (정확히 5년째 되는 날 퇴사한 경우의 실제 근속연수)", () => {
+      const result = calculateSeveranceTax({
+        severancePay: 50_000_000,
+        serviceYears: 6,
+      });
+      expect(result.serviceYearDeduction).toBe(7_000_000);
+      expect(result.convertedSalary).toBe(86_000_000);
+      expect(result.convertedSalaryDeduction).toBe(54_000_000);
+      expect(result.taxBase).toBe(32_000_000);
+      expect(result.convertedTax).toBe(3_540_000);
+      expect(result.severanceTax).toBe(1_770_000);
+      expect(result.localIncomeTax).toBe(177_000);
+      expect(result.netAmount).toBe(48_053_000);
     });
   });
 

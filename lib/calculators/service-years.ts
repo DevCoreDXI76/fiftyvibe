@@ -9,8 +9,14 @@ export function calculateServiceYears(
   const end = new Date(endDate);
 
   const exactYears = end.getUTCFullYear() - start.getUTCFullYear();
+  const startMonth = start.getUTCMonth();
   const anniversary = new Date(start);
   anniversary.setUTCFullYear(start.getUTCFullYear() + exactYears);
+  if (anniversary.getUTCMonth() !== startMonth) {
+    // 원래 일자(예: 2월 29일)가 대상 연도에 존재하지 않아 다음 달로 넘어간 경우,
+    // 민법 제160조제3항에 따라 그 달의 마지막 날로 고정한다 (2026-07-27 리뷰로 확인).
+    anniversary.setUTCFullYear(start.getUTCFullYear() + exactYears, startMonth + 1, 0);
+  }
 
   // 홈택스 공식 예제표(소득세법 시행령 제105조1항 해석)로 확인된 규칙:
   // 퇴사일이 입사일로부터 "정확히 N년째 되는 날"이어도 N+1년으로 계산한다
