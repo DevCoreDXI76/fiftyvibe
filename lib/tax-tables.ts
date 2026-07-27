@@ -24,6 +24,10 @@ export const TAX_TABLES = {
       { upTo: null, rate: 0.45, deduction: 65_940_000 },
     ],
     localIncomeTaxRate: 0.1,
+    deferredPensionTaxReduction: [
+      { upToYear: 10, rate: 0.7 },
+      { upToYear: null, rate: 0.6 },
+    ],
   },
 } as const;
 
