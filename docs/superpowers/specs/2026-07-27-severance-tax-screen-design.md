@@ -7,7 +7,7 @@
 Phase 1(계산 로직: `lib/tax-tables.ts`, `lib/calculators/severance-tax.ts`, `lib/calculators/service-years.ts`)이
 완료·병합됐다. 이번 Phase 2는 `/tools/severance-tax` 실제 화면과 콘텐츠, SEO 메타를 만든다.
 홈택스 대조는 여전히 보류 상태(D-11)이며, 이 화면도 그 사실을 사용자에게 고지한다(Disclaimer +
-설명 콘텐츠 마지막 문단).
+설명 콘텐츠 마지막 문단). (→ 2026-07-27 홈택스 실측 대조 완료, 게이트 해제됨 — 자세한 내용은 DECISIONS.md D-11 참고)
 
 ## 1. 파일 구조
 
