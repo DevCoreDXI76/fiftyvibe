@@ -1,22 +1,23 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
-import { useState, type FormEvent } from "react";
-import {
-  Bar,
-  BarChart,
-  CartesianGrid,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts";
+import dynamic from "next/dynamic";
+import { useEffect, useState, type FormEvent } from "react";
 import { calculatePensionCompare } from "@/lib/calculators/pension-compare";
 import { formatWon, parseWonInput } from "@/lib/format-currency";
 import { trackEvent } from "@/lib/analytics";
 import { Disclaimer } from "@/components/disclaimer";
 import { AdSlot } from "@/components/ad-slot";
 import { ToolCTA } from "@/components/tool-cta";
+
+const LumpVsPensionChart = dynamic(
+  () => import("./lump-vs-pension-chart").then((mod) => mod.LumpVsPensionChart),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="h-64 w-full animate-pulse rounded bg-steel/10" />
+    ),
+  },
+);
 
 type PayoutYearsOption = "10" | "15" | "20" | "custom";
 
@@ -38,14 +39,8 @@ const MIN_START_AGE = 55;
 const MAX_START_AGE = 70;
 
 export function LumpVsPensionCalculator() {
-  const searchParams = useSearchParams();
-
-  const [severancePayInput, setSeverancePayInput] = useState(
-    searchParams.get("amount")?.replace(/[^0-9]/g, "") ?? "",
-  );
-  const [serviceYearsInput, setServiceYearsInput] = useState(
-    searchParams.get("years") ?? "",
-  );
+  const [severancePayInput, setSeverancePayInput] = useState("");
+  const [serviceYearsInput, setServiceYearsInput] = useState("");
   const [payoutYearsOption, setPayoutYearsOption] =
     useState<PayoutYearsOption>("10");
   const [customPayoutYears, setCustomPayoutYears] = useState("");
@@ -55,6 +50,14 @@ export function LumpVsPensionCalculator() {
     null,
   );
   const [accordionOpen, setAccordionOpen] = useState(false);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const amount = params.get("amount");
+    const years = params.get("years");
+    if (amount) setSeverancePayInput(amount.replace(/[^0-9]/g, ""));
+    if (years) setServiceYearsInput(years);
+  }, []);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -247,6 +250,10 @@ export function LumpVsPensionCalculator() {
             }}
             className="w-full rounded border border-steel/40 px-3 py-2"
           />
+          <p className="mt-1 text-xs text-navy/50">
+            개시 나이는 세액 계산에는 영향을 주지 않으며, 수령 종료 예상
+            시점 표시에만 사용됩니다.
+          </p>
         </div>
 
         {error && <p className="text-sm text-red-600">{error}</p>}
@@ -267,21 +274,7 @@ export function LumpVsPensionCalculator() {
             않았습니다.
           </p>
 
-          <div className="h-64 w-full">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={chartData}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis
-                  tickFormatter={(value: number) =>
-                    `${(value / 10_000).toLocaleString("ko-KR")}만`
-                  }
-                />
-                <Tooltip formatter={(value) => formatWon(Number(value))} />
-                <Bar dataKey="총세금" fill="#0E1A2F" />
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
+          <LumpVsPensionChart data={chartData} />
 
           <div>
             <p className="text-sm text-navy/70">절세액</p>

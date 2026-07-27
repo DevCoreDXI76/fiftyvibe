@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
 import { LumpVsPensionCalculator } from "@/components/lump-vs-pension-calculator";
 import { AdSlot } from "@/components/ad-slot";
 
@@ -98,13 +97,7 @@ export default function LumpVsPensionPage() {
         </span>
       </h1>
 
-      <Suspense
-        fallback={
-          <div className="h-96 w-full animate-pulse rounded-lg bg-steel/10" />
-        }
-      >
-        <LumpVsPensionCalculator />
-      </Suspense>
+      <LumpVsPensionCalculator />
 
       <section className="flex flex-col gap-4 text-navy">
         <p>
@@ -139,7 +132,16 @@ export default function LumpVsPensionPage() {
           일시금과 연금 중 어느 쪽이 유리한지는 근속연수, 예상 수령 기간,
           다른 소득과의 합산 여부, 자금이 당장 필요한지 등 개인 상황에 따라
           달라집니다. 이 계산기는 세금 측면의 참고 자료로만 활용하고, 실제
-          결정 전에는 세무 전문가와 상담하시기 바랍니다.
+          결정 전에는 세무 전문가와 상담하시기 바랍니다. 또한 이 계산기는
+          연차별 세액을 원래 퇴직소득세를 수령기간으로 균등하게 나눈 값으로
+          모델링합니다. 예를 들어 10년간 나눠 받는다면 원래 퇴직소득세를
+          단순히 10등분한 금액에 각 연차 감면율을 적용하는 방식이며, 실제
+          세법상 이연퇴직소득세 정산 방식과 세부적으로 다를 수 있습니다.
+          도구 1(퇴직소득세 계산기)은 홈택스 모의계산과 대조해 오차 0원을
+          확인했지만, 홈택스에는 일시금과 연금을 비교하는 모의계산 기능
+          자체가 없어 이 도구는 같은 방식으로 실제 지급 결과와 대조 검증하는
+          것이 불가능하다는 점도 참고하시어, 최종 수령 방식 결정에는 이
+          계산기의 절세액을 하나의 참고 지표로만 활용하시기 바랍니다.
         </p>
       </section>
 
