@@ -12,7 +12,11 @@ export function calculateServiceYears(
   const anniversary = new Date(start);
   anniversary.setUTCFullYear(start.getUTCFullYear() + exactYears);
 
-  const hasPartialYear = end.getTime() > anniversary.getTime();
+  // 홈택스 공식 예제표(소득세법 시행령 제105조1항 해석)로 확인된 규칙:
+  // 퇴사일이 입사일로부터 "정확히 N년째 되는 날"이어도 N+1년으로 계산한다
+  // (하루라도 못 미치면 N년). anniversary와 "같은 날"도 부분년으로 취급해야
+  // 하므로 >= 를 쓴다 (2026-07-27 홈택스 실측 대조로 확정).
+  const hasPartialYear = end.getTime() >= anniversary.getTime();
   const years = hasPartialYear ? exactYears + 1 : exactYears;
 
   return Math.max(years, 1);
