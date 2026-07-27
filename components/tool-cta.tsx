@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { trackEvent } from "@/lib/analytics";
 
 type ToolCTAProps = {
   title: string;
@@ -11,11 +14,12 @@ export function ToolCTA({ title, description, href, ctaLabel }: ToolCTAProps) {
   return (
     <Link
       href={href}
+      onClick={() => trackEvent("tool_cross_link", { to: href })}
       className="block rounded-lg border border-steel/30 bg-white p-6 transition hover:border-amber hover:shadow-md"
     >
       <p className="text-lg font-semibold text-navy">{title}</p>
       <p className="mt-2 text-sm text-navy/70">{description}</p>
-      <span className="mt-4 inline-block text-sm font-medium text-amber">
+      <span className="mt-4 inline-block text-sm font-medium text-navy underline decoration-amber">
         {ctaLabel} →
       </span>
     </Link>

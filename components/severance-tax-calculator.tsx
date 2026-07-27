@@ -3,7 +3,7 @@
 import { useState, type FormEvent } from "react";
 import { calculateSeveranceTax } from "@/lib/calculators/severance-tax";
 import { calculateServiceYears } from "@/lib/calculators/service-years";
-import { formatWon } from "@/lib/format-currency";
+import { formatWon, parseWonInput } from "@/lib/format-currency";
 import { trackEvent } from "@/lib/analytics";
 import { Disclaimer } from "@/components/disclaimer";
 import { AdSlot } from "@/components/ad-slot";
@@ -46,7 +46,7 @@ export function SeveranceTaxCalculator() {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const severancePay = Number(severancePayInput) || 0;
+    const severancePay = parseWonInput(severancePayInput);
     if (severancePay <= 0) {
       setError("퇴직급여 총액을 입력해주세요.");
       setCalculation(null);
@@ -112,9 +112,10 @@ export function SeveranceTaxCalculator() {
                 ? Number(severancePayInput).toLocaleString("ko-KR")
                 : ""
             }
-            onChange={(event) =>
-              setSeverancePayInput(event.target.value.replace(/[^0-9]/g, ""))
-            }
+            onChange={(event) => {
+              setSeverancePayInput(event.target.value.replace(/[^0-9]/g, ""));
+              setCalculation(null);
+            }}
             placeholder="예: 100,000,000"
             className="w-full rounded border border-steel/40 px-3 py-2"
           />
@@ -142,7 +143,7 @@ export function SeveranceTaxCalculator() {
         </div>
 
         {mode === "date" ? (
-          <div className="flex gap-4">
+          <div className="flex flex-col gap-4 sm:flex-row">
             <div className="flex-1">
               <label
                 htmlFor="startDate"
@@ -154,7 +155,10 @@ export function SeveranceTaxCalculator() {
                 id="startDate"
                 type="date"
                 value={startDate}
-                onChange={(event) => setStartDate(event.target.value)}
+                onChange={(event) => {
+                  setStartDate(event.target.value);
+                  setCalculation(null);
+                }}
                 className="w-full rounded border border-steel/40 px-3 py-2"
               />
             </div>
@@ -169,7 +173,10 @@ export function SeveranceTaxCalculator() {
                 id="endDate"
                 type="date"
                 value={endDate}
-                onChange={(event) => setEndDate(event.target.value)}
+                onChange={(event) => {
+                  setEndDate(event.target.value);
+                  setCalculation(null);
+                }}
                 className="w-full rounded border border-steel/40 px-3 py-2"
               />
             </div>
@@ -187,7 +194,10 @@ export function SeveranceTaxCalculator() {
               type="number"
               min="1"
               value={manualYears}
-              onChange={(event) => setManualYears(event.target.value)}
+              onChange={(event) => {
+                setManualYears(event.target.value);
+                setCalculation(null);
+              }}
               className="w-full rounded border border-steel/40 px-3 py-2"
             />
           </div>
@@ -202,8 +212,6 @@ export function SeveranceTaxCalculator() {
           계산하기
         </button>
       </form>
-
-      <Disclaimer />
 
       {calculation && (
         <div className="flex flex-col gap-4">
@@ -222,7 +230,7 @@ export function SeveranceTaxCalculator() {
             <button
               type="button"
               onClick={() => setAccordionOpen((open) => !open)}
-              className="text-sm font-medium text-amber underline"
+              className="text-sm font-medium text-navy underline decoration-amber"
             >
               계산 과정 보기 {accordionOpen ? "▲" : "▼"}
             </button>
@@ -251,6 +259,8 @@ export function SeveranceTaxCalculator() {
           />
         </div>
       )}
+
+      <Disclaimer />
     </div>
   );
 }

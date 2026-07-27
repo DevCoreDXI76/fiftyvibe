@@ -6,6 +6,16 @@ export const metadata: Metadata = {
   title: "퇴직소득세 계산기 (2026) — 퇴직금 실수령액 세후 계산 | 피프티바이브",
   description:
     "퇴직금 실수령액과 세금을 미리 계산해보세요. 근속연수공제부터 지방소득세까지 계산 과정을 단계별로 확인할 수 있습니다.",
+  alternates: {
+    canonical: "/tools/severance-tax",
+  },
+  openGraph: {
+    title: "퇴직소득세 계산기 (2026) — 퇴직금 실수령액 세후 계산 | 피프티바이브",
+    description:
+      "퇴직금 실수령액과 세금을 미리 계산해보세요. 근속연수공제부터 지방소득세까지 계산 과정을 단계별로 확인할 수 있습니다.",
+    url: "/tools/severance-tax",
+    type: "website",
+  },
 };
 
 const PAGE_URL = "https://fiftyvibe.kr/tools/severance-tax";
@@ -138,7 +148,7 @@ export default function SeveranceTaxPage() {
         <h2 className="text-xl font-bold text-navy">자주 묻는 질문</h2>
         {FAQ_ITEMS.map((item) => (
           <div key={item.question}>
-            <p className="font-medium text-navy">Q. {item.question}</p>
+            <h3 className="font-medium text-navy">Q. {item.question}</h3>
             <p className="mt-1 text-navy/80">A. {item.answer}</p>
           </div>
         ))}
