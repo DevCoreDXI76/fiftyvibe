@@ -81,6 +81,12 @@ function dcValueAt(
 
 // dcValueAt(n, rate) === dbValueAt(n)이 되는 rate를 이분탐색으로 구한다.
 // dcValueAt은 rate에 대해 단조증가(납입액이 모두 양수)이므로 이분탐색이 안전하다.
+//
+// [닫힌 형태 항등식] 임금피크제가 없을 때는 손익분기 수익률이 항상 연 임금상승률 g와
+// 정확히 같다. dbFull = salary(n)/12 * n이고, rate=g로 두면 dcValueAt의 각 납입항이
+// salary(i)/12 * (1+g)^(n-i) = salary(n)/12로 전부 같아져(salary(i)=salary(n)/(1+g)^(n-i)
+// 이므로) n개 항의 합이 정확히 salary(n)/12 * n = dbFull이 되기 때문이다. 즉 "임금상승률보다
+// 높은 수익률을 낼 수 있으면 DC가 유리하다"는 이 도구 전체의 핵심 직관이 여기서 나온다.
 function calculateBreakEvenRate(input: DbDcInput): number {
   // n<=1이면 유일한 납입 항의 복리 지수가 0이 되어 DC_full이 rate와 무관해진다
   // (dcValueAt(1)은 항상 salary(1)/12 === dbValueAt(1)) — 손익분기가 정의되지 않는다.
