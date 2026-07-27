@@ -35,10 +35,10 @@
 - [x] 메타태그 + JSON-LD (07-27, WebApplication+FAQPage+BreadcrumbList)
 
 ## 4. 도구 2: 일시금 vs 연금 (W2)
-- [ ] `lib/calculators/pension-compare.ts` (도구 1 로직 import)
-- [ ] 쿼리 파라미터 수신 (도구 1 → 2 값 전달)
-- [ ] 화면 + 비교 차트 + 연차별 표
-- [ ] 고지문(운용수익 별도) + 설명 콘텐츠 + SEO
+- [x] `lib/calculators/pension-compare.ts` (도구 1 로직 import) (07-27)
+- [x] 쿼리 파라미터 수신 (도구 1 → 2 값 전달) (07-27)
+- [x] 화면 + 비교 차트 + 연차별 표 (07-27, Playwright 스모크 테스트 통과)
+- [x] 고지문(운용수익 별도) + 설명 콘텐츠 + SEO (07-27)
 
 ## 5. 도구 3: DB/DC 전환 (W2)
 - [ ] `lib/calculators/db-dc.ts` + 손익분기 수익률 산출
