@@ -71,9 +71,8 @@
 - [x] Vercel 프로덕션 + fiftyvibe.kr DNS 연결 + https 확인 (07-28, DNS/HTTPS 정상, 전 페이지
   200 확인. www→non-www 리다이렉트 방향을 코드의 canonical/OG/sitemap 기준(non-www)에
   맞게 운영자가 Vercel 대시보드에서 수정 완료)
-- [ ] GA4 실데이터 수신 확인 (07-28, 측정 ID 발급 완료(G-PV68RXSB6F), 로컬 `.env`에 등록해
-  빌드 반영 확인. 남은 것: Vercel 대시보드 Environment Variables에도 동일 값 등록 → 재배포
-  → 실시간 리포트에서 접속 확인)
+- [x] GA4 실데이터 수신 확인 (07-28, 측정 ID(G-PV68RXSB6F) Vercel 환경변수 등록·재배포 완료,
+  실시간 리포트에서 활성 사용자·페이지 경로(/, /tools/db-dc 등) 정상 수신 확인)
 
 ## 8. 색인·홍보 (W4)
 - [ ] 구글 서치콘솔: 소유 확인, sitemap 제출, 대표 URL 색인 요청
