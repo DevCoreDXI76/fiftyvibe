@@ -59,7 +59,8 @@
 
 ## 7. 배포·검수 (W3)
 - [ ] privacy 개인정보 보호책임자 정보·시행일자 실제 값 입력 (현재 TODO 플레이스홀더)
-- [ ] sitemap.xml, robots.txt
+- [x] sitemap.xml, robots.txt (07-28, `app/sitemap.ts`/`app/robots.ts`로 동적 생성 —
+  lib/guides.ts 기반이라 향후 가이드 추가 시 자동 반영됨)
 - [ ] Lighthouse 모바일 90+ (성능·접근성·SEO)
 - [ ] 모바일 실기기 확인 (입력 UX, 숫자 키패드)
 - [ ] Vercel 프로덕션 + fiftyvibe.kr DNS 연결 + https 확인
