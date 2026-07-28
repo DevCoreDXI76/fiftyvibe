@@ -67,11 +67,13 @@
   전환해 렌더링 차단 해소(성능 73→93+). 주의: `npx lighthouse` 기본값인
   `--throttling-method=simulate`는 이 정적 사이트에서 LCP를 비정상적으로 부풀림(실측정 대비
   10배 이상) — 재측정 시 반드시 `--throttling-method=devtools` 사용할 것)
-- [ ] 모바일 실기기 확인 (입력 UX, 숫자 키패드)
+- [x] 모바일 실기기 확인 (입력 UX, 숫자 키패드) (07-28, 운영자 실기기 확인 완료)
 - [x] Vercel 프로덕션 + fiftyvibe.kr DNS 연결 + https 확인 (07-28, DNS/HTTPS 정상, 전 페이지
   200 확인. www→non-www 리다이렉트 방향을 코드의 canonical/OG/sitemap 기준(non-www)에
   맞게 운영자가 Vercel 대시보드에서 수정 완료)
-- [ ] GA4 실데이터 수신 확인
+- [ ] GA4 실데이터 수신 확인 (07-28, 측정 ID 발급 완료(G-PV68RXSB6F), 로컬 `.env`에 등록해
+  빌드 반영 확인. 남은 것: Vercel 대시보드 Environment Variables에도 동일 값 등록 → 재배포
+  → 실시간 리포트에서 접속 확인)
 
 ## 8. 색인·홍보 (W4)
 - [ ] 구글 서치콘솔: 소유 확인, sitemap 제출, 대표 URL 색인 요청
