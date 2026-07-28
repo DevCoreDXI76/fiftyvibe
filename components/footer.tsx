@@ -9,6 +9,7 @@ const CHANNEL_LINKS = [
 ];
 
 const SITE_LINKS = [
+  { label: "가이드", href: "/guide" },
   { label: "소개", href: "/about" },
   { label: "개인정보처리방침", href: "/privacy" },
   { label: "문의", href: "/contact" },

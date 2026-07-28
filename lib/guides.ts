@@ -38,8 +38,8 @@ export const GUIDES: Guide[] = [
   },
 ];
 
-export const RELATED_GUIDES: Record<string, string[]> = {
+export const RELATED_GUIDES = {
   "severance-tax": ["severance-tax-explained", "lump-vs-pension-guide", "db-vs-dc"],
   "lump-vs-pension": ["lump-vs-pension-guide", "severance-tax-explained", "dc-switch-checklist"],
   "db-dc": ["db-vs-dc", "dc-switch-checklist", "risk-asset-70"],
-};
+} as const satisfies Record<string, readonly string[]>;
