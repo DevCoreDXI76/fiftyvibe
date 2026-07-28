@@ -58,7 +58,8 @@
 - [x] 도구 1·2·3(퇴직소득세 계산기, 일시금 vs 연금 비교, DB/DC 전환 계산기) 하단에 관련 가이드 3링크 삽입 (07-28)
 
 ## 7. 배포·검수 (W3)
-- [ ] privacy 개인정보 보호책임자 정보·시행일자 실제 값 입력 (현재 TODO 플레이스홀더)
+- [ ] privacy 개인정보 보호책임자 정보·시행일자 실제 값 입력 (07-28, 성명 "홍길동" 반영·배포
+  완료. 연락처(이메일)는 배포 전용 계정 개설 후, 시행일자는 정식 오픈일 확정 후 입력 예정)
 - [x] sitemap.xml, robots.txt (07-28, `app/sitemap.ts`/`app/robots.ts`로 동적 생성 —
   lib/guides.ts 기반이라 향후 가이드 추가 시 자동 반영됨)
 - [x] Lighthouse 모바일 90+ (성능·접근성·SEO) (07-28, 홈/도구3/가이드목록: 성능
@@ -67,7 +68,9 @@
   `--throttling-method=simulate`는 이 정적 사이트에서 LCP를 비정상적으로 부풀림(실측정 대비
   10배 이상) — 재측정 시 반드시 `--throttling-method=devtools` 사용할 것)
 - [ ] 모바일 실기기 확인 (입력 UX, 숫자 키패드)
-- [ ] Vercel 프로덕션 + fiftyvibe.kr DNS 연결 + https 확인
+- [x] Vercel 프로덕션 + fiftyvibe.kr DNS 연결 + https 확인 (07-28, DNS/HTTPS 정상, 전 페이지
+  200 확인. www→non-www 리다이렉트 방향을 코드의 canonical/OG/sitemap 기준(non-www)에
+  맞게 운영자가 Vercel 대시보드에서 수정 완료)
 - [ ] GA4 실데이터 수신 확인
 
 ## 8. 색인·홍보 (W4)
