@@ -97,8 +97,8 @@ const TOOL_CARDS = [
 export default function Home() {
   return (
     <>
-      <section className="bg-navy px-6 py-16 text-ivory sm:py-24">
-        <div className="mx-auto flex max-w-5xl flex-col gap-4">
+      <section className="bg-navy py-16 text-ivory sm:py-24">
+        <div className="mx-auto flex max-w-5xl flex-col gap-4 px-6">
           <h1 className="text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
             피프티바이브
             <span className="brand-cursor" aria-hidden="true">
@@ -117,8 +117,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="px-6 py-12">
-        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-4 sm:grid-cols-3">
+      <section className="py-12">
+        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-4 px-6 sm:grid-cols-3">
           {TOOL_CARDS.map((card) => (
             <HomeToolCard key={card.href} {...card} />
           ))}
