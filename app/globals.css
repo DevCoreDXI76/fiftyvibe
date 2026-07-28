@@ -6,7 +6,7 @@
   --color-amber: #f5a623;
   --color-steel: #8fb8e8;
   --color-ivory: #f2f6fc;
-  --font-sans: "Pretendard", sans-serif;
+  --font-sans: var(--font-pretendard), sans-serif;
   --font-mono: var(--font-jbmono);
 }
 

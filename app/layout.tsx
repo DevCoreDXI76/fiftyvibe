@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { JetBrains_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
@@ -9,6 +10,13 @@ const jetBrainsMono = JetBrains_Mono({
   variable: "--font-jbmono",
   subsets: ["latin"],
   preload: false,
+});
+
+const pretendard = localFont({
+  src: "../public/fonts/PretendardVariable.woff2",
+  variable: "--font-pretendard",
+  display: "swap",
+  weight: "45 920",
 });
 
 export const metadata: Metadata = {
@@ -24,13 +32,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko" className={`${jetBrainsMono.variable} h-full antialiased`}>
-      <head>
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@1.3.9/dist/web/static/pretendard-dynamic-subset.css"
-        />
-      </head>
+    <html
+      lang="ko"
+      className={`${jetBrainsMono.variable} ${pretendard.variable} h-full antialiased`}
+    >
       <body className="flex min-h-full flex-col">
         <Header />
         <main className="flex flex-1 flex-col">{children}</main>
