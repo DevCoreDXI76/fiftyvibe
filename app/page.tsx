@@ -1,65 +1,129 @@
-import Image from "next/image";
+import type { Metadata } from "next";
+import type { SVGProps } from "react";
+import { HomeToolCard } from "@/components/home-tool-card";
+
+export const metadata: Metadata = {
+  title: "피프티바이브 — 퇴직연금 계산 도구",
+  description:
+    "50세 1인 개발자가 만드는 퇴직소득세·일시금 vs 연금·DB/DC 전환 계산 도구. 숫자만 입력하면 1분 안에 결과를 확인할 수 있습니다.",
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: "피프티바이브 — 퇴직연금 계산 도구",
+    description:
+      "50세 1인 개발자가 만드는 퇴직소득세·일시금 vs 연금·DB/DC 전환 계산 도구.",
+    url: "/",
+    type: "website",
+  },
+};
+
+function IconBase(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.5}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="h-6 w-6 text-navy"
+      aria-hidden="true"
+      {...props}
+    />
+  );
+}
+
+function CalculatorIcon() {
+  return (
+    <IconBase>
+      <rect x="5" y="3" width="14" height="18" rx="2" />
+      <line x1="8" y1="7" x2="16" y2="7" />
+      <circle cx="8" cy="12" r="0.5" fill="currentColor" />
+      <circle cx="12" cy="12" r="0.5" fill="currentColor" />
+      <circle cx="16" cy="12" r="0.5" fill="currentColor" />
+      <circle cx="8" cy="16" r="0.5" fill="currentColor" />
+      <circle cx="12" cy="16" r="0.5" fill="currentColor" />
+      <circle cx="16" cy="16" r="0.5" fill="currentColor" />
+    </IconBase>
+  );
+}
+
+function ScaleIcon() {
+  return (
+    <IconBase>
+      <line x1="12" y1="3" x2="12" y2="21" />
+      <line x1="5" y1="7" x2="19" y2="7" />
+      <path d="M5 7 L2 13 a3 3 0 0 0 6 0 Z" />
+      <path d="M19 7 L16 13 a3 3 0 0 0 6 0 Z" />
+      <line x1="8" y1="21" x2="16" y2="21" />
+    </IconBase>
+  );
+}
+
+function SwapIcon() {
+  return (
+    <IconBase>
+      <path d="M4 7h13" />
+      <path d="M14 4l3 3-3 3" />
+      <path d="M20 17H7" />
+      <path d="M10 20l-3-3 3-3" />
+    </IconBase>
+  );
+}
+
+const TOOL_CARDS = [
+  {
+    step: 1,
+    icon: <CalculatorIcon />,
+    title: "퇴직소득세 계산기",
+    description: "퇴직금 실수령액이 궁금하다면",
+    href: "/tools/severance-tax",
+  },
+  {
+    step: 2,
+    icon: <ScaleIcon />,
+    title: "일시금 vs 연금 비교",
+    description: "어떻게 받을지 고민된다면",
+    href: "/tools/lump-vs-pension",
+  },
+  {
+    step: 3,
+    icon: <SwapIcon />,
+    title: "DB/DC 전환 계산기",
+    description: "DC 전환을 검토 중이라면",
+    href: "/tools/db-dc",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <>
+      <section className="bg-navy px-6 py-16 text-ivory sm:py-24">
+        <div className="mx-auto flex max-w-5xl flex-col gap-4">
+          <h1 className="text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
+            피프티바이브
+            <span className="brand-cursor" aria-hidden="true">
+              ▮
+            </span>
+            <br />
+            퇴직금, 세금 떼면 얼마 남을까
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="max-w-xl text-base text-ivory/80 sm:text-lg">
+            저도 2027년 3월 DB에서 DC로 전환합니다. 그 과정에 필요했던
+            계산기를 직접 만들었습니다.
+          </p>
+          <p className="text-base font-medium text-amber sm:text-lg">
+            숫자만 입력하면 1분 안에 끝나요.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      <section className="px-6 py-12">
+        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-4 sm:grid-cols-3">
+          {TOOL_CARDS.map((card) => (
+            <HomeToolCard key={card.href} {...card} />
+          ))}
         </div>
-      </main>
-    </div>
+      </section>
+    </>
   );
 }
