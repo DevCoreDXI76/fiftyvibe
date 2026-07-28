@@ -24,6 +24,9 @@ export const metadata: Metadata = {
   title: "피프티바이브 — 퇴직연금 계산 도구",
   description:
     "50세 1인 개발자(피프티바이브)가 만드는 퇴직소득세·연금수령·DB/DC 전환 계산 도구",
+  verification: {
+    google: "_Jlo-jkTQxIpzqeac4CvgYERGhW5xx7WA9pfJKqwGwI",
+  },
 };
 
 export default function RootLayout({
