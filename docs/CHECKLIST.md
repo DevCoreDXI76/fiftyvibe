@@ -75,8 +75,10 @@
   실시간 리포트에서 활성 사용자·페이지 경로(/, /tools/db-dc 등) 정상 수신 확인)
 
 ## 8. 색인·홍보 (W4)
-- [ ] 구글 서치콘솔: 소유 확인, sitemap 제출, 대표 URL 색인 요청
-- [ ] 네이버 서치어드바이저: 동일
+- [x] 구글 서치콘솔: 소유 확인, sitemap 제출, 대표 URL 색인 요청 (07-28, HTML 태그 방식
+  소유 확인 — `app/layout.tsx` metadata.verification.google)
+- [x] 네이버 서치어드바이저: 동일 (07-28, metadata.verification.other의
+  naver-site-verification)
 - [ ] 유튜브 제작기 1편 업로드 (설명란에 사이트 링크)
 - [ ] 네이버 블로그 런칭 글 / 디스콰이엇 등록 / 스레드 공유
 
