@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { LumpVsPensionCalculator } from "@/components/lump-vs-pension-calculator";
 import { AdSlot } from "@/components/ad-slot";
+import { RelatedGuides } from "@/components/related-guides";
 
 export const metadata: Metadata = {
   title: "퇴직금 일시금 vs 연금 수령 세금 비교 계산기 | 피프티바이브",
@@ -144,6 +145,8 @@ export default function LumpVsPensionPage() {
           계산기의 절세액을 하나의 참고 지표로만 활용하시기 바랍니다.
         </p>
       </section>
+
+      <RelatedGuides tool="lump-vs-pension" />
 
       <section className="flex flex-col gap-6">
         <h2 className="text-xl font-bold text-navy">자주 묻는 질문</h2>

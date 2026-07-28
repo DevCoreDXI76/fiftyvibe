@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import type { SVGProps } from "react";
+import Link from "next/link";
 import { HomeToolCard } from "@/components/home-tool-card";
+import { GUIDES } from "@/lib/guides";
 
 export const metadata: Metadata = {
   title: "피프티바이브 — 퇴직연금 계산 도구",
@@ -122,6 +124,32 @@ export default function Home() {
           {TOOL_CARDS.map((card) => (
             <HomeToolCard key={card.href} {...card} />
           ))}
+        </div>
+      </section>
+
+      <section className="py-12">
+        <div className="mx-auto flex max-w-5xl flex-col gap-4 px-6">
+          <div className="flex items-center justify-between">
+            <h2 className="text-xl font-bold text-navy">최신 가이드</h2>
+            <Link
+              href="/guide"
+              className="text-sm font-medium text-navy underline decoration-amber"
+            >
+              전체 보기 →
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+            {GUIDES.slice(0, 3).map((guide) => (
+              <Link
+                key={guide.slug}
+                href={`/guide/${guide.slug}`}
+                className="rounded-lg border border-steel/30 bg-white p-6 transition hover:border-amber hover:shadow-md"
+              >
+                <p className="text-lg font-semibold text-navy">{guide.title}</p>
+                <p className="mt-2 text-sm text-navy/70">{guide.description}</p>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
     </>

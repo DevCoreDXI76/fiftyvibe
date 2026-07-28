@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { DbDcCalculator } from "@/components/db-dc-calculator";
 import { AdSlot } from "@/components/ad-slot";
+import { RelatedGuides } from "@/components/related-guides";
 
 export const metadata: Metadata = {
   title: "퇴직연금 DB DC 전환 계산기 — 유불리 비교 | 피프티바이브",
@@ -140,6 +141,8 @@ export default function DbDcPage() {
           종합적으로 고려해 신중하게 결정하시기 바랍니다.
         </p>
       </section>
+
+      <RelatedGuides tool="db-dc" />
 
       <section className="flex flex-col gap-6">
         <h2 className="text-xl font-bold text-navy">자주 묻는 질문</h2>

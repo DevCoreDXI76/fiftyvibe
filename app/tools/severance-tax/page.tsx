@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SeveranceTaxCalculator } from "@/components/severance-tax-calculator";
 import { AdSlot } from "@/components/ad-slot";
+import { RelatedGuides } from "@/components/related-guides";
 
 export const metadata: Metadata = {
   title: "퇴직소득세 계산기 (2026) — 퇴직금 실수령액 세후 계산 | 피프티바이브",
@@ -144,6 +145,8 @@ export default function SeveranceTaxPage() {
           모의계산이나 세무 전문가를 통해 다시 한번 확인하시기 바랍니다.
         </p>
       </section>
+
+      <RelatedGuides tool="severance-tax" />
 
       <section className="flex flex-col gap-6">
         <h2 className="text-xl font-bold text-navy">자주 묻는 질문</h2>
