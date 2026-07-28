@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const CHANNEL_LINKS = [
   {
     label: "유튜브",
@@ -6,9 +8,10 @@ const CHANNEL_LINKS = [
   { label: "네이버 블로그", href: "https://blog.naver.com/coredxi" },
 ];
 
-const POLICY_LINKS = [
-  { label: "개인정보처리방침", href: "#" },
-  { label: "문의", href: "#" },
+const SITE_LINKS = [
+  { label: "소개", href: "/about" },
+  { label: "개인정보처리방침", href: "/privacy" },
+  { label: "문의", href: "/contact" },
 ];
 
 export function Footer() {
@@ -28,11 +31,11 @@ export function Footer() {
             </a>
           ))}
         </nav>
-        <nav className="flex gap-4" aria-label="정책 링크">
-          {POLICY_LINKS.map((link) => (
-            <a key={link.label} href={link.href} className="hover:text-amber">
+        <nav className="flex gap-4" aria-label="사이트 링크">
+          {SITE_LINKS.map((link) => (
+            <Link key={link.href} href={link.href} className="hover:text-amber">
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
       </div>
