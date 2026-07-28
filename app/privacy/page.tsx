@@ -95,8 +95,9 @@ export default function PrivacyPage() {
 
       <section className="flex flex-col gap-2">
         <h2 className="text-lg font-semibold">6. 개인정보 보호책임자</h2>
-        {/* TODO(운영자): 성명, 연락처(이메일 등) 직접 입력 */}
-        <p className="text-navy/60">배포 전 운영자 정보로 채워야 합니다.</p>
+        <p>성명: 홍길동</p>
+        {/* TODO(운영자): 배포 전용 이메일 개설 후 연락처 직접 입력 */}
+        <p className="text-navy/60">연락처: 배포 전 이메일 개설 후 채워야 합니다.</p>
       </section>
 
       <section className="flex flex-col gap-2">
