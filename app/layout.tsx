@@ -26,6 +26,9 @@ export const metadata: Metadata = {
     "50세 1인 개발자(피프티바이브)가 만드는 퇴직소득세·연금수령·DB/DC 전환 계산 도구",
   verification: {
     google: "_Jlo-jkTQxIpzqeac4CvgYERGhW5xx7WA9pfJKqwGwI",
+    other: {
+      "naver-site-verification": "b154c0dc4ab57a91ee3536694bb1580461ef0611",
+    },
   },
 };
 
