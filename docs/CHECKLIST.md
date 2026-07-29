@@ -81,7 +81,9 @@
 - [x] 구글 서치콘솔: 소유 확인, sitemap 제출, 대표 URL 색인 요청 (07-28, HTML 태그 방식
   소유 확인 — `app/layout.tsx` metadata.verification.google)
 - [x] 네이버 서치어드바이저: 동일 (07-28, metadata.verification.other의
-  naver-site-verification)
+  naver-site-verification. 07-29 운영자가 웹마스터도구 콘솔에서 재확인 — 사이트 등록(소유확인)
+  통과 상태였고, 사이트맵 제출(sitemap.xml, 등록일 26.07.28 19:40:13)·웹페이지 수집요청
+  (대표 URL "/", 등록일 26.07.28 19:40:28) 이력이 스크린샷으로 확인됨. 3개 항목 모두 완료)
 - [ ] 유튜브 제작기 1편 업로드 (설명란에 사이트 링크)
 - [ ] 네이버 블로그 런칭 글 / 디스콰이엇 등록 / 스레드 공유
 
