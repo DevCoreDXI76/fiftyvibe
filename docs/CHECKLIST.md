@@ -22,6 +22,10 @@
 - [x] tailwind.config 디자인 토큰 등록 (SPEC §6) — Tailwind v4라 app/globals.css @theme로 구현 (07-27)
 - [x] 폰트: Pretendard + JetBrains Mono (07-27)
 - [x] 레이아웃: 헤더(로고타입+커서), 푸터 (07-27)
+- [x] 브라우저 탭 파비콘 교체 (07-29, 헤더의 앰버 커서 모티프 + 스틸블루 게이지 링 조합.
+  `app/icon.svg`(모던 브라우저), `app/favicon.ico`(16/32/48px 레거시 폴백),
+  `app/apple-icon.png`(180×180 iOS 홈 화면) 3종. 신규 이미지 자산·npm 의존성 추가 없이
+  SVG 좌표 + 기존 설치돼 있던 sharp로 1회성 변환)
 - [x] `<Disclaimer />`, `<AdSlot />`, `<ToolCTA />` (07-27)
 - [x] GA4 스니펫 + 이벤트 유틸 (07-27, 측정 ID는 아직 미발급 — .env.example에 변수만 준비)
 
