@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { JetBrains_Mono } from "next/font/google";
 import localFont from "next/font/local";
+import Script from "next/script";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
@@ -42,6 +43,14 @@ export default function RootLayout({
       lang="ko"
       className={`${jetBrainsMono.variable} ${pretendard.variable} h-full antialiased`}
     >
+      <head>
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8125995278513075"
+          crossOrigin="anonymous"
+          strategy="beforeInteractive"
+        />
+      </head>
       <body className="flex min-h-full flex-col">
         <Header />
         <main className="flex flex-1 flex-col">{children}</main>
