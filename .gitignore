@@ -46,3 +46,6 @@ next-env.d.ts
 
 # git worktrees (local scratch)
 .worktrees/
+
+# Claude Code local tooling (local only)
+.claude/
