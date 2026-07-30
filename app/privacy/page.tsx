@@ -95,9 +95,8 @@ export default function PrivacyPage() {
 
       <section className="flex flex-col gap-2">
         <h2 className="text-lg font-semibold">6. 개인정보 보호책임자</h2>
-        <p>성명: 홍길동</p>
-        {/* TODO(운영자): 배포 전용 이메일 개설 후 연락처 직접 입력 */}
-        <p className="text-navy/60">연락처: 배포 전 이메일 개설 후 채워야 합니다.</p>
+        <p>성명: 최시헌</p>
+        <p>연락처: devcoredxi00@coredxi.com</p>
       </section>
 
       <section className="flex flex-col gap-2">
@@ -108,8 +107,7 @@ export default function PrivacyPage() {
         </p>
       </section>
 
-      {/* TODO(운영자): 실제 배포일로 시행일자 확정 */}
-      <p className="text-sm text-navy/60">시행일자: 배포 시 확정 예정</p>
+      <p className="text-sm text-navy/60">시행일자: 2026-07-29</p>
     </div>
   );
 }
