@@ -116,8 +116,9 @@
   리포트는 속성 인증 직후라 아직 데이터 집계 중("며칠 후 재확인" 안내)이었으나, 사이트맵
   기준 크롤링 가능 페이지 수로 판단해 애드센스 검토 요청 진행 가능 결론)
 - [x] 애드센스 신청 (법인 CoreDXI 계정) (07-30, coredxi.com 애드센스 계정에 fiftyvibe.kr
-  신규 사이트 등록, 소유권 확인용 adsbygoogle 스크립트 `app/layout.tsx`에 삽입 — 승인
-  대기중)
+  신규 사이트 등록, 소유권 확인용 adsbygoogle 스크립트 `app/layout.tsx`에 삽입. 07-31
+  10:30 "검토 요청" 버튼 클릭해 정식 리뷰 요청 완료 — 상태 "준비 중"으로 전환. 구글
+  안내상 통상 며칠 이내, 최대 2~4주 소요 가능)
 - [ ] 승인 → AdSlot 활성화 (07-31, ads.txt는 배치 완료(`public/ads.txt`, `pub-8125995278513075`).
   `components/ad-slot.tsx`는 아직 placeholder — 승인 확인 후 실제 광고 스니펫으로 교체)
 - [ ] 광고 게재 후 Lighthouse 재확인 (CLS 점검)
