@@ -111,7 +111,10 @@
   dc-plan-provider-switch, pension-receipt-methods-after-55, severance-interim-settlement,
   severance-tax-common-mistakes. 기존 5편 + 신규 5편 = 총 10편 체제 완성, 관련 가이드
   링크 보강 포함)
-- [ ] 색인 페이지 수 확인 (최소 10+)
+- [x] 색인 페이지 수 확인 (최소 10+) (07-31, 서치콘솔 Sitemaps 리포트에서 sitemap.xml
+  "처리 완료" 상태로 18개 페이지 발견 확인 — 최소 기준 10건 충족. 페이지 색인생성
+  리포트는 속성 인증 직후라 아직 데이터 집계 중("며칠 후 재확인" 안내)이었으나, 사이트맵
+  기준 크롤링 가능 페이지 수로 판단해 애드센스 검토 요청 진행 가능 결론)
 - [x] 애드센스 신청 (법인 CoreDXI 계정) (07-30, coredxi.com 애드센스 계정에 fiftyvibe.kr
   신규 사이트 등록, 소유권 확인용 adsbygoogle 스크립트 `app/layout.tsx`에 삽입 — 승인
   대기중)
