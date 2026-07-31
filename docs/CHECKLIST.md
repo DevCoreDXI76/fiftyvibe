@@ -107,11 +107,16 @@
   — 퇴직연금 계산 도구")가 정상적으로 첨부된 것을 직접 확인함)
 
 ## 9. 애드센스 (W5+)
-- [ ] 가이드 8~10편 증량 (07-28, 기존 5편 2,000자+ 보강은 완료 — §6 참고. 신규 3~5편
-  추가는 아직 미착수)
+- [x] 가이드 8~10편 증량 (07-30, 신규 5편 추가 완료 — irp-tax-deduction-limit,
+  dc-plan-provider-switch, pension-receipt-methods-after-55, severance-interim-settlement,
+  severance-tax-common-mistakes. 기존 5편 + 신규 5편 = 총 10편 체제 완성, 관련 가이드
+  링크 보강 포함)
 - [ ] 색인 페이지 수 확인 (최소 10+)
-- [ ] 애드센스 신청 (법인 CoreDXI 계정)
-- [ ] 승인 → AdSlot 활성화, ads.txt 배치
+- [x] 애드센스 신청 (법인 CoreDXI 계정) (07-30, coredxi.com 애드센스 계정에 fiftyvibe.kr
+  신규 사이트 등록, 소유권 확인용 adsbygoogle 스크립트 `app/layout.tsx`에 삽입 — 승인
+  대기중)
+- [ ] 승인 → AdSlot 활성화 (07-31, ads.txt는 배치 완료(`public/ads.txt`, `pub-8125995278513075`).
+  `components/ad-slot.tsx`는 아직 placeholder — 승인 확인 후 실제 광고 스니펫으로 교체)
 - [ ] 광고 게재 후 Lighthouse 재확인 (CLS 점검)
 
 ## 10. 운영 루틴 (런칭 후 상시)
