@@ -168,6 +168,23 @@ describe("calculateSeveranceTax", () => {
     });
   });
 
+  describe("콘텐츠 페이지 예시 케이스 (도구 페이지 '계산 예시 B'의 근거값 — 실제 함수 출력을 그대로 assertion, 홈택스 대조 대상 아님)", () => {
+    it("퇴직급여 5,000만원, 근속 8년", () => {
+      const result = calculateSeveranceTax({
+        severancePay: 50_000_000,
+        serviceYears: 8,
+      });
+      expect(result.serviceYearDeduction).toBe(11_000_000);
+      expect(result.convertedSalary).toBe(58_500_000);
+      expect(result.convertedSalaryDeduction).toBe(38_300_000);
+      expect(result.taxBase).toBe(20_200_000);
+      expect(result.convertedTax).toBe(1_770_000);
+      expect(result.severanceTax).toBe(1_180_000);
+      expect(result.localIncomeTax).toBe(118_000);
+      expect(result.netAmount).toBe(48_702_000);
+    });
+  });
+
   describe("근속연수 직접 입력 정규화 (근속연수 1년 미만은 1년으로 처리)", () => {
     it("근속연수 0은 1년으로 취급한다", () => {
       const zeroYears = calculateSeveranceTax({
