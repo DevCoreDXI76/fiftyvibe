@@ -117,3 +117,14 @@
   확인되면 이 항목 닫음
 - O-03: salaryfit 서치콘솔 지표 확인 → Phase 2 이전 판단 재료
 - O-04: 세무사 확인 2건 (D-07)
+- O-05: PageSpeed LCP 불안정(12~19초) 원인 = Auto Ads, AdSense 대시보드 확인 필요 (담당: 운영자)
+  — 진행 상황(08-12, TASK_pagespeed-perf-fix-2 조사): `components/ad-slot.tsx`는 `<ins>`도
+  `push()`도 없는 순수 placeholder라 코드상 지연 로딩할 대상이 없음. 실사이트
+  (`/tools/severance-tax`) Chrome DevTools 트레이스(모바일, 4x CPU throttle, Slow 4G) 확인
+  결과, `adsbygoogle.js` 실행 시 **Google Auto Ads가 페이지를 자체 스캔해 `<ins
+  class="adsbygoogle-noablate">` + iframe 3개를 코드와 무관하게 자동 삽입**하는 것을 확인
+  (이번 2회 측정은 unfilled라 LCP 정상: 1,275~1,477ms). 지시서가 관측한 12~19초 LCP는
+  Auto Ads가 실제로 광고를 채운 순간을 잡은 것으로 추정됨. Auto Ads 삽입 위치·타이밍은
+  코드가 아니라 AdSense 계정의 Auto ads 설정으로만 제어 가능 — 운영자가 대시보드에서
+  Auto ads 형식(인피드/앵커/전면 등) 확인 후 조정 필요. 코드 작업(IntersectionObserver
+  구현)은 이 조사 결과를 이유로 보류함(TASK_pagespeed-perf-fix-2.md 참고)
