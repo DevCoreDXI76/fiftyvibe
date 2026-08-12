@@ -128,6 +128,31 @@ export default function Home() {
       </section>
 
       <section className="py-12">
+        <div className="mx-auto flex max-w-5xl flex-col gap-4 px-6 text-navy">
+          <p>
+            피프티바이브는 50세, IT 대기업 부장으로 일하며 2027년 3월 회사의
+            DB형 퇴직연금을 DC형으로 전환할 예정인 운영자가 직접 만든 계산
+            도구 모음입니다. 퇴직을 준비하며 부딪힌 세금 계산 문제를 스스로
+            풀어보려고 만들기 시작했고, 같은 고민을 하는 직장인에게도 도움이
+            되길 바라며 공개하고 있습니다.
+          </p>
+          <p>
+            모든 계산기는 2026년 소득세법을 기준으로 하며 홈택스
+            모의계산과 대조해 검증합니다. 특정 금융상품을 추천하거나
+            투자를 권유하지 않고, 계산 공식에 근거한 숫자만 보여드립니다.
+            운영자 소개와 계산 근거는{" "}
+            <Link
+              href="/about"
+              className="text-navy underline decoration-amber"
+            >
+              소개 페이지
+            </Link>
+            에서 자세히 확인할 수 있습니다.
+          </p>
+        </div>
+      </section>
+
+      <section className="py-12">
         <div className="mx-auto flex max-w-5xl flex-col gap-4 px-6">
           <div className="flex items-center justify-between">
             <h2 className="text-xl font-bold text-navy">최신 가이드</h2>
