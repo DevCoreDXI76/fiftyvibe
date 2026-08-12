@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "소개 | 피프티바이브",
   description:
-    "50세 1인 개발자 피프티바이브가 퇴직연금 계산 도구를 만드는 이유.",
+    "50세 1인 개발자 피프티바이브가 퇴직연금 계산 도구를 만드는 이유와 계산 근거, 개인정보 처리 방침을 소개합니다.",
   alternates: { canonical: "/about" },
   openGraph: {
     title: "소개 | 피프티바이브",
-    description: "50세 1인 개발자 피프티바이브가 퇴직연금 계산 도구를 만드는 이유.",
+    description:
+      "50세 1인 개발자 피프티바이브가 퇴직연금 계산 도구를 만드는 이유와 계산 근거, 개인정보 처리 방침을 소개합니다.",
     url: "/about",
     type: "website",
   },
@@ -43,6 +45,36 @@ export default function AboutPage() {
       </p>
 
       {/* TODO(운영자): 경력, 구체적인 계기 등 추가 에피소드 삽입 가능 */}
+
+      <p>
+        이 사이트의 모든 계산기는 2026년 현재 시행 중인 소득세법을
+        기준으로 하며, 홈택스 모의계산과 대조해 검증합니다. 세법이
+        개정되면 계산 로직과 세율표도 함께 업데이트할 방침입니다.
+      </p>
+
+      <p>
+        이 사이트의 모든 계산은 여러분의 브라우저 안에서만 실행되며,
+        입력하신 정보는 서버로 전송되거나 저장되지 않습니다. 자세한
+        내용은{" "}
+        <Link
+          href="/privacy"
+          className="text-navy underline decoration-amber"
+        >
+          개인정보처리방침
+        </Link>
+        에서 확인하실 수 있습니다.
+      </p>
+
+      <p>
+        문의는 devcoredxi00@coredxi.com으로 보내주시거나,{" "}
+        <Link
+          href="/contact"
+          className="text-navy underline decoration-amber"
+        >
+          문의 페이지
+        </Link>
+        에 안내된 채널을 이용해주세요.
+      </p>
 
       <p>
         도구를 만들고 검토하는 과정은 유튜브와 네이버 블로그에도 기록하고
