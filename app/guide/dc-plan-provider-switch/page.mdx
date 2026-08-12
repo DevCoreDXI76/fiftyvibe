@@ -11,11 +11,18 @@ export const metadata = {
 };
 
 import { ToolCTA } from "@/components/tool-cta";
+import { GUIDES } from "@/lib/guides";
 
 <h1 className="text-2xl font-bold">
   DC형 퇴직연금 수익률이 낮을 때 운용사·상품 갈아타는 법
   <span className="brand-cursor" aria-hidden="true">▮</span>
 </h1>
+
+{(
+  <p className="mt-4 text-sm text-navy/60">
+    최종 수정일: {GUIDES.find((g) => g.slug === "dc-plan-provider-switch")?.publishedAt}
+  </p>
+)}
 
 DC형(확정기여형) 퇴직연금은 회사가 매년 일정 금액을 납입해주지만, 그 돈을 어떤 상품에
 굴릴지는 근로자 본인이 직접 선택하고 책임집니다. 원리금보장형 상품에만 넣어두고 방치하면

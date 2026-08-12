@@ -11,11 +11,18 @@ export const metadata = {
 };
 
 import { ToolCTA } from "@/components/tool-cta";
+import { GUIDES } from "@/lib/guides";
 
 <h1 className="text-2xl font-bold">
   위험자산 70% 규칙과 안전자산 30%
   <span className="brand-cursor" aria-hidden="true">▮</span>
 </h1>
+
+{(
+  <p className="mt-4 text-sm text-navy/60">
+    최종 수정일: {GUIDES.find((g) => g.slug === "risk-asset-70")?.publishedAt}
+  </p>
+)}
 
 ## DC·IRP 계좌엔 투자 한도가 있습니다
 

@@ -11,11 +11,18 @@ export const metadata = {
 };
 
 import { ToolCTA } from "@/components/tool-cta";
+import { GUIDES } from "@/lib/guides";
 
 <h1 className="text-2xl font-bold">
   퇴직금 중간정산 조건과 세금, 실제로 얼마나 낼까
   <span className="brand-cursor" aria-hidden="true">▮</span>
 </h1>
+
+{(
+  <p className="mt-4 text-sm text-navy/60">
+    최종 수정일: {GUIDES.find((g) => g.slug === "severance-interim-settlement")?.publishedAt}
+  </p>
+)}
 
 퇴직금은 원칙적으로 퇴직 시점에 한 번에 지급하는 것이지만, 법에서 정한 특정 사유에
 해당하면 재직 중에도 미리 정산받을 수 있습니다. 이를 중간정산이라고 부릅니다. 다만

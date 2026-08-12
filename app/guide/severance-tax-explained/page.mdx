@@ -11,11 +11,18 @@ export const metadata = {
 };
 
 import { ToolCTA } from "@/components/tool-cta";
+import { GUIDES } from "@/lib/guides";
 
 <h1 className="text-2xl font-bold">
   퇴직소득세 계산 구조를 예시로 이해하기
   <span className="brand-cursor" aria-hidden="true">▮</span>
 </h1>
+
+{(
+  <p className="mt-4 text-sm text-navy/60">
+    최종 수정일: {GUIDES.find((g) => g.slug === "severance-tax-explained")?.publishedAt}
+  </p>
+)}
 
 ## 퇴직소득세는 왜 이렇게 복잡할까
 

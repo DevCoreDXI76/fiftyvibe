@@ -11,11 +11,18 @@ export const metadata = {
 };
 
 import { ToolCTA } from "@/components/tool-cta";
+import { GUIDES } from "@/lib/guides";
 
 <h1 className="text-2xl font-bold">
   일시금 vs 연금 수령, 감면 70%/60% 규칙 이해하기
   <span className="brand-cursor" aria-hidden="true">▮</span>
 </h1>
+
+{(
+  <p className="mt-4 text-sm text-navy/60">
+    최종 수정일: {GUIDES.find((g) => g.slug === "lump-vs-pension-guide")?.publishedAt}
+  </p>
+)}
 
 ## 왜 연금으로 받으면 세금이 줄어들까
 

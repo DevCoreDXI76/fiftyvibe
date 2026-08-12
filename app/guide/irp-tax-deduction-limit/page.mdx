@@ -11,11 +11,18 @@ export const metadata = {
 };
 
 import { ToolCTA } from "@/components/tool-cta";
+import { GUIDES } from "@/lib/guides";
 
 <h1 className="text-2xl font-bold">
   IRP 세액공제 한도와 퇴직금 이체 시 주의사항
   <span className="brand-cursor" aria-hidden="true">▮</span>
 </h1>
+
+{(
+  <p className="mt-4 text-sm text-navy/60">
+    최종 수정일: {GUIDES.find((g) => g.slug === "irp-tax-deduction-limit")?.publishedAt}
+  </p>
+)}
 
 IRP(개인형 퇴직연금) 계좌는 두 가지 전혀 다른 용도로 쓰입니다. 하나는 회사에서 받은
 퇴직금을 받아두는 그릇으로서의 IRP이고, 다른 하나는 본인이 직접 돈을 추가로 넣어

@@ -11,11 +11,18 @@ export const metadata = {
 };
 
 import { ToolCTA } from "@/components/tool-cta";
+import { GUIDES } from "@/lib/guides";
 
 <h1 className="text-2xl font-bold">
   55세 이후 퇴직연금 수령방법 총정리
   <span className="brand-cursor" aria-hidden="true">▮</span>
 </h1>
+
+{(
+  <p className="mt-4 text-sm text-navy/60">
+    최종 수정일: {GUIDES.find((g) => g.slug === "pension-receipt-methods-after-55")?.publishedAt}
+  </p>
+)}
 
 퇴직연금을 IRP 계좌로 이체받았다면, 만 55세가 지난 시점부터 수령 방법을 선택할 수
 있습니다. 전액을 한 번에 찾는 일시금 수령, 정해진 기간에 나눠 받는 연금 수령, 그리고

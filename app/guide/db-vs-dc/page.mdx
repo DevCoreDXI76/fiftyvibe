@@ -11,11 +11,18 @@ export const metadata = {
 };
 
 import { ToolCTA } from "@/components/tool-cta";
+import { GUIDES } from "@/lib/guides";
 
 <h1 className="text-2xl font-bold">
   DB형 vs DC형 차이, 그리고 제가 DC 전환을 결정하기까지
   <span className="brand-cursor" aria-hidden="true">▮</span>
 </h1>
+
+{(
+  <p className="mt-4 text-sm text-navy/60">
+    최종 수정일: {GUIDES.find((g) => g.slug === "db-vs-dc")?.publishedAt}
+  </p>
+)}
 
 ## DB형과 DC형, 무엇이 다른가
 
