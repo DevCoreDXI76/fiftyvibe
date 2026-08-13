@@ -162,3 +162,21 @@ JSON-LD 스펙 (FAQPage):
   - 배포 후: Vercel 배포 확인 → 서치콘솔에서 도구 3개 + About 색인 재요청 → 리치 결과 테스트 + 실제 Lighthouse 모바일 점수 확인
   - DECISIONS.md에 "게이트 결과: 거절(저가치 콘텐츠) → 3주 보강 후 재신청 트랙" 기록, CHECKLIST.md에 T1~T6 반영 (§4, 사용자 직접 수행 영역)
   - 재신청은 목표 8/30~9/5, 2주차 가이드 신규 작성은 별도 지시서로 진행 예정
+
+## 배포 후 확인 결과 (08-13, 운영자 수행 + Cowork 세션 기록)
+
+- [x] Vercel 배포 확인: 커밋 8건 push·배포 완료, 도구 3페이지 + About에서 증량 콘텐츠 노출 확인
+- [x] 서치콘솔 색인 재요청: `/tools/severance-tax`, `/tools/lump-vs-pension`, `/tools/db-dc`,
+  `/about` 4개 URL 모두 "색인 생성 요청" 완료
+- [x] FAQPage 구조화 데이터 검증: **§3의 "리치 결과 테스트 통과" 게이트는 검증 불가로 대체됨** —
+  구글이 FAQ 리치 결과를 2026-05-07 완전 중단했고 6월부터 리치 결과 테스트의 FAQ 감지도
+  제거됨(도구에는 탐색경로·소프트웨어 앱만 표시). 대체 검증: validator.schema.org에서
+  `/tools/severance-tax` 기준 BreadcrumbList·WebApplication·FAQPage 3종 모두 **오류 0·경고 0**
+  확인. FAQ 마크업은 유지(무해하며, 가치는 화면에 보이는 FAQ 콘텐츠 자체에 있음)
+- [x] 소프트웨어 앱(WebApplication) 항목의 "aggregateRating 누락" 경고는 선택 필드라 무시
+  (실사용자 평점 데이터 없이 넣으면 오히려 가이드라인 위반)
+- [△] Lighthouse/PSI 모바일: 접근성 96·권장사항 100·SEO 100. 성능은 Auto Ads 이슈(O-05)로
+  중앙값 61점/LCP 14.2초 — 콘텐츠 증량 자체의 문제가 아니라 광고 스크립트 요인이며, 상세
+  기준선과 후속 계획은 TASK_pagespeed-perf-fix-2.md §T3 결과 및 DECISIONS.md O-05 참고
+- 남은 것: 2주차 신규 가이드 지시서 작성 → 진행, 재신청(8/30~9/5), coredxi.com 플래그 처리
+  방침 결정(재신청 전)
