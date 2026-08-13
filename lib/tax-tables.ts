@@ -28,6 +28,14 @@ export const TAX_TABLES = {
       { upToYear: 10, rate: 0.7 },
       { upToYear: null, rate: 0.6 },
     ],
+    // 연금수령한도 산식(2026-08-13 재검증, 2개 독립 출처 일치): 연금수령연차가
+    // yearThreshold(11) 미만이면 "연금계좌 평가액 ÷ (11 − 연금수령연차) × 120%"를
+    // 한도로 하고, 11년 이상이면 전액을 한도로 본다.
+    // 근거: 소득세법 시행령 제40조의2 제3항제3호(산식), 같은 조 제4항 본문(11년 이상 전액).
+    pensionWithdrawalLimit: {
+      yearThreshold: 11,
+      multiplier: 1.2,
+    },
   },
 } as const;
 
