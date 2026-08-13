@@ -129,7 +129,15 @@
   2026-05 FAQ 리치 결과 중단) validator.schema.org로 대체, 오류 0 확인
 - [x] PSI 기준선 측정 5회 (08-13, 성능 중앙값 61/LCP 중앙값 14.2초 — Auto Ads 이슈,
   DECISIONS.md O-05. 재승인 직후 Auto ads 조정 + 재측정 필수)
-- [ ] 재신청 보강 2주차: 신규 가이드 작성 (별도 지시서로 진행)
+- [x] 재신청 보강 2주차: 신규 가이드 4편 작성 + 상호 링크망 재정비 (08-13,
+  TASK_guide-week2 T0~T6, 커밋 5건). 가이드 10→14편 체제 전환: IRP 연금수령한도 계산법
+  (소득세법 시행령 제40조의2 기반 신규 계산 로직 `lib/calculators/pension-withdrawal-limit.ts`
+  포함), 임금피크제 앞두고 DB→DC 전환 시점, 55세 이후 연금 수령 시 건강보험료 영향(원안
+  "중간정산 후 근속연수 합산 규칙"이 기존 가이드 #7과 결론 중복돼 예비 후보로 교체, DECISIONS.md
+  D-13 참고), 55세 이전 퇴직금 수령 시 세금 불이익. 기존 가이드 6편에 역방향 링크 추가,
+  `lib/guides.ts` 갱신으로 sitemap.xml 자동 반영 확인. 검증: build/vitest(54건) 통과,
+  FAQPage JSON-LD 파싱 오류 0, 금융상품 추천 문구 grep 0건, Lighthouse로 신규 페이지
+  성능·접근성 저하 없음 확인(기존 가이드와 동일 점수) 후 master push·배포 완료
 - [ ] 애드센스 재신청 (목표 8/30~9/5)
 - [ ] 재승인 직후: Auto ads 형식 조정(전면 광고 끄기 우선) → PSI 5회 재측정 (O-05)
 - [ ] 승인 → AdSlot 활성화 (07-31, ads.txt는 배치 완료(`public/ads.txt`, `pub-8125995278513075`).
