@@ -97,8 +97,10 @@ coredxi.com 처리는 **옵션 B(사이트 목록에서 제거)로 결정됨** (
 - [x] T2: 금융상품 추천 문구 0건 (08-14, grep 재검사)
 - [x] T2: `<Disclaimer />` 전 페이지 포함 (08-14, 도구 3개 전부 확인)
 - [x] T3: 가이드 4편 경험 보강 완료 (08-14: db-vs-dc, lump-vs-pension-guide,
-      severance-tax-explained, severance-tax-common-mistakes) — 색인 재요청은 배포 후 진행
-- [ ] T4: O-05 재점검 결과 기록
+      severance-tax-explained, severance-tax-common-mistakes). master push·배포 확인
+      완료(08-14), 4편 전부 색인 재요청 완료(08-14)
+- [x] T4: O-05 재점검 결과 기록 (08-14, DECISIONS.md O-05 참고 — 성능 52점/LCP 18.8초로
+      기준선 범위 내 재현, Auto Ads 지연 삽입 가설 재확인, 완화책 없음 확정)
 - [ ] 조건 A: 색인률 70%+ (수치 기록: ___)
 - [ ] 조건 B: 유기 유입 발생 확인 (주간 세션 수 기록: ___)
 
@@ -143,8 +145,13 @@ DECISIONS.md 오픈 이슈로 등록 권장 (O-06 예상 번호).
   기준 오해→정정 서술 + 수익률 결정 기준), lump-vs-pension-guide(일시금/연금 미확정 상태를
   그대로 서술), severance-tax-explained(계산기를 만들게 된 개인적 동기 서술),
   severance-tax-common-mistakes(공제 항목 구분 헷갈렸던 경험 서술). 색인 재요청은 배포 후 진행
-- T4 O-05 재점검 결과:
+- T4 O-05 재점검 결과: 08-14, 라이브 사이트(퇴직소득세 계산기) PSI 모바일 1회 재측정 —
+  성능 52점 / LCP 18.8초로 08-13 기준선(58~65점/14.1~18.7초) 범위 내 재현. LCP 분석
+  패널상 요소 렌더링 지연 2,480ms vs 최종 LCP 18,800ms 격차로 Auto Ads 지연 삽입 가설
+  재확인. 완화책은 AdSense 대시보드 Auto ads 설정으로만 가능, 코드 측 대안 없음 확정 →
+  "재승인 직후 최우선 처리" 원안 유지 (DECISIONS.md O-05 참고)
 - 조건 A/B 충족 수치와 확인 일자:
 - 재신청 실행 여부/일자:
 - 미완/이슈: T2의 JSON-LD 전수 재검증(19페이지, validator.schema.org)은 이번 세션에서
-  미실행 — 다음 배포 전후로 별도 확인 권장
+  미실행 — T3 대상 4편은 JSON-LD 미보유라 영향 없음을 확인했으나, 나머지 7페이지(도구 3 +
+  2주차 신규 가이드 중 FAQ 포함 페이지)는 2주차 이후 미재검증 상태. 다음 세션에서 별도 확인 권장
