@@ -152,6 +152,25 @@ DECISIONS.md 오픈 이슈로 등록 권장 (O-06 예상 번호).
   "재승인 직후 최우선 처리" 원안 유지 (DECISIONS.md O-05 참고)
 - 조건 A/B 충족 수치와 확인 일자:
 - 재신청 실행 여부/일자:
-- 미완/이슈: T2의 JSON-LD 전수 재검증(19페이지, validator.schema.org)은 이번 세션에서
-  미실행 — T3 대상 4편은 JSON-LD 미보유라 영향 없음을 확인했으나, 나머지 7페이지(도구 3 +
-  2주차 신규 가이드 중 FAQ 포함 페이지)는 2주차 이후 미재검증 상태. 다음 세션에서 별도 확인 권장
+- 후속 QA (08-14, 운영자 요청으로 추가 확인):
+  - **T3 나이·연혁 일관성 재검토**: db-vs-dc에 넣은 "임금피크제 만 58세" 서술이 기존
+    published 가이드(wage-peak-db-dc-timing, 2주차)의 "임금피크제 적용 시점 = 2027년 3월
+    (DC 전환 시점과 동일)" 서술과 불일치함을 발견 → "2027년 3월"로 정정, 재배포 완료
+    (커밋 1475a1b). lump-vs-pension-guide/severance-tax-explained/severance-tax-common-mistakes
+    3편은 나이·시점 관련 불일치 없음 확인
+  - **JSON-LD 7페이지(도구 3 + 2주차 신규 가이드 4편 중 FAQ 포함분) 재검증**: validator.schema.org로
+    6페이지 오류 0건 확인. irp-pension-withdrawal-limit 1편은 검사기가 요청 과다로 CAPTCHA
+    표시 → 소스 직접 확인해 유효한 JSON + 동일 컴포넌트(tool-guide.tsx) 기반 구조임을 확인
+    (정식 검사기 재확인은 추후 권장)
+  - **Lighthouse 모바일 6페이지 라이브 재측정**: SEO 100 · Agentic 100 · Accessibility
+    95~96(기존 이슈, 백로그 항목과 일치) · Best Practices 77 전 페이지 동일 — 원인은 이
+    세션 브라우저가 운영자 Google 계정에 로그인된 상태라 third-party-cookies/inspector-issues가
+    오탐되는 것으로 확인(같은 URL을 08-14 공식 PSI에서 측정 시 Best Practices 100). 성능
+    카테고리는 이 감사 도구 범위 밖이며 O-05로 별도 추적 중
+  - **Disclaimer 범위 확인**: CLAUDE.md 규칙 4는 "도구 페이지"만 의무화(도구 3개 전부 포함
+    확인됨). 가이드 14편 중에서는 6편(severance-tax-explained, severance-tax-common-mistakes,
+    early-withdrawal-before-55-tax, pension-health-insurance-after-55, wage-peak-db-dc-timing,
+    irp-pension-withdrawal-limit)만 면책 문구를 자체적으로 포함하고 있고, 나머지 8편
+    (db-vs-dc, lump-vs-pension-guide, dc-switch-checklist, risk-asset-70,
+    severance-interim-settlement, pension-receipt-methods-after-55, irp-tax-deduction-limit,
+    dc-plan-provider-switch)은 면책 문구 없음 — 규칙 위반은 아니나 운영자 확인 필요 (아래 참고)
