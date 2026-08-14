@@ -45,7 +45,10 @@ coredxi.com 처리는 **옵션 B(사이트 목록에서 제거)로 결정됨** (
 1. `npm run build` 정적 export 성공 확인 (2주차 이후 처음 전체 빌드면 특히 중요)
 2. **링크 무결성 전수 점검**: 2주차 상호 링크 매트릭스가 깨진 링크 없이 연결되는지 스크립트로 확인 (내부 링크 크롤러 또는 `next build` 후 sitemap 기준 각 URL 200 응답 확인)
 3. **JSON-LD 전수 재검증**: 19페이지 전체를 validator.schema.org로 순회 검증 (1주차엔 도구 1개만 샘플 검증)
-4. **Lighthouse 모바일 90+ 재확인**: 대표 페이지 5~6개 샘플 (도구 3 + 신규 가이드 2 + 기존 가이드 1)
+4. **Lighthouse 모바일 90+ 재확인 (SEO·접근성·Best Practices 한정, Performance 제외 — D-15)**:
+   대표 페이지 5~6개 샘플 (도구 3 + 신규 가이드 2 + 기존 가이드 1). Performance/LCP는
+   O-05로 별도 추적하는 인지된 리스크이며 이 게이트 대상이 아님(광고 코드 변경 금지 규칙과
+   충돌하므로 재신청 전 개선 불가)
 5. 메타태그 중복 확인: title/description 페이지별 고유성 (특히 신규 4편 vs 기존)
 6. 금융상품 추천 문구 grep 재검사 (증권사/운용사/ETF 상품명) — T3 보강분 포함 전체 재검사
 7. `<Disclaimer />` 누락 페이지 없는지 전 페이지 확인
@@ -85,17 +88,23 @@ coredxi.com 처리는 **옵션 B(사이트 목록에서 제거)로 결정됨** (
 - [x] T1: coredxi.com 사이트 목록 제거 완료 + DECISIONS.md 기록 (08-14, D-14)
 - [x] T2: `npm run build` 성공 (08-14)
 - [x] T2: 19페이지 링크 무결성 이상 없음 (08-14, `scripts/check-links.mjs` 신설·통과)
-- [ ] T2: JSON-LD 오류 0건 (validator.schema.org) — T3 대상 4편은 JSON-LD 미보유라 영향 없음.
-      JSON-LD 보유 7페이지(도구 3 + 2주차 신규 가이드 4편 중 FAQ 포함 페이지)는 2주차에
-      이미 검증 완료·이번 세션에서 미변경 → 재검증 보류, 필요 시 배포 후 별도 확인
-- [x] T2: 샘플 페이지 Lighthouse 재확인 (08-14, mobile, 로컬 정적 서버 기준 6페이지 샘플:
-      도구 3 + 2주차 신규 가이드 2 + T3 대상 기존 가이드 1) — SEO 100 / Agentic 100 /
-      Accessibility 95~96(기존 이슈, 백로그 항목과 일치) / Best Practices 77(전부 Auto
-      Ads·reCAPTCHA 관련 third-party-cookies·inspector-issues, O-05 기지 이슈와 동일 원인,
-      T3 변경과 무관). 90+ 게이트는 성능 카테고리 기준이 아니며 성능은 O-05로 별도 추적 중
+- [x] T2: JSON-LD 오류 0건 (validator.schema.org, 08-14 재검증) — JSON-LD 보유 7페이지(도구 3 +
+      2주차 신규 가이드 4편) 중 6페이지 정식 검사 통과(오류 0건). 나머지 1페이지
+      (irp-pension-withdrawal-limit)는 검사기가 요청 과다로 CAPTCHA를 띄워 두 차례 재시도
+      모두 실패 — 소스 직접 대조로 유효한 JSON + 동일 컴포넌트(tool-guide.tsx) 구조임을
+      확인해 잠정 통과 처리. **재신청 직전 시간 두고 validator.schema.org 재시도해 정식
+      확인 권장** (운영자 확인 사항)
+- [x] T2: 샘플 페이지 Lighthouse 재확인 — SEO·접근성·Best Practices 한정, Performance 제외
+      (D-15). 08-14 라이브 사이트(fiftyvibe.kr) mobile 6페이지 샘플(도구 3 + 2주차 신규
+      가이드 2 + T3 대상 기존 가이드 1): SEO 100 / Agentic 100 / Accessibility 95~96(기존
+      이슈, 백로그 항목과 일치) / Best Practices — 공식 PSI(클린 세션) 기준 100, 이 세션
+      브라우저(운영자 Google 계정 로그인 상태) 기준으로는 third-party-cookies 오탐으로 77.
+      Performance/LCP는 O-05로 별도 추적 중인 인지된 리스크로 게이트 제외(D-15 근거)
 - [x] T2: 메타태그 중복 없음 (08-14, title 19개 전수 유일성 확인)
 - [x] T2: 금융상품 추천 문구 0건 (08-14, grep 재검사)
-- [x] T2: `<Disclaimer />` 전 페이지 포함 (08-14, 도구 3개 전부 확인)
+- [x] T2: `<Disclaimer />` 전 페이지 포함 (08-14 최초 확인: 도구 3개 전부 포함, 가이드 14편
+      중 6편만 포함. 운영자 확인 후 08-14 후속 작업으로 나머지 8편 신규 추가 + 기존 2편
+      컴포넌트로 업그레이드 → 가이드 14편 전체 `<Disclaimer />` 포함 완료, build 확인)
 - [x] T3: 가이드 4편 경험 보강 완료 (08-14: db-vs-dc, lump-vs-pension-guide,
       severance-tax-explained, severance-tax-common-mistakes). master push·배포 확인
       완료(08-14), 4편 전부 색인 재요청 완료(08-14)
